@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Numerics;
 
 namespace Lenstra_elliptic_curve_factorization
 {
     static class LenstraEllipticCurveFactorization
     {
-        public static IEnumerable<BigInteger> Factorize(BigInteger n, int m = 10, int attempts = 10000)
+        public static BigInteger Factorize(BigInteger n, int m = 10, int attempts = 10000)
         {
             Random random = new Random(DateTime.Now.Millisecond);
             ListOfPrimes primes = new ListOfPrimes();
@@ -23,16 +22,16 @@ namespace Lenstra_elliptic_curve_factorization
 
                     for (int j = 0; j < alpha; j++)
                     {
-                        q = mult.Mult(q, prime);
-                        if (mult.Divisors.Count > 0)
+                        q = mult.Mult(q, prime, out BigInteger divisor);
+                        if (!divisor.IsZero)
                         {
-                            return mult.Divisors;
+                            return divisor;
                         }
                     }
                 }
             }
 
-            return new BigInteger[0];
+            return n;
         }
     }
 }
