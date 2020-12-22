@@ -7,12 +7,13 @@ namespace Lenstra_elliptic_curve_factorization
     {
         static void Main(string[] args)
         {
-            BigInteger a = BigInteger.Parse("274876858367");
-            BigInteger b = BigInteger.Parse("68718952447");
-            BigInteger c = BigInteger.Parse("10501");
+            BigInteger a = BigInteger.Parse("4469743212299");
+            BigInteger b = BigInteger.Parse("440074369743212299");
+            BigInteger c = BigInteger.Parse("4400743697434543212277");
+            LenstraECFactorization factorization = new
+                LenstraECFactorization(1000, 100);
 
-            Console.WriteLine(LenstraEllipticCurveFactorization.Factorize(
-            661643));
+            Console.WriteLine(factorization.Factorize(a*b*c));
         }
     }
 }

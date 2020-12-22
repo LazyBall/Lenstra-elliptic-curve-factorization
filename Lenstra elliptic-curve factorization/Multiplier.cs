@@ -17,17 +17,17 @@ namespace Lenstra_elliptic_curve_factorization
         {
             divisor = BigInteger.Zero;
 
-            if (Q.x == 0 && Q.y == 0)
+            if (Q.X == 0 && Q.Y == 0)
                 return P;
 
-            if (P.x == 0 && P.y == 0)
+            if (P.X == 0 && P.Y == 0)
                 return Q;
 
-            BigInteger d = GCD(P.x - Q.x, _mod, out BigInteger x, out _);
+            BigInteger d = ExtendedGCD(P.X - Q.X, _mod, out BigInteger x, out _);
 
-            BigInteger lm = (P.y - Q.y) * x % _mod;
-            BigInteger xr = (BigInteger.ModPow(lm, 2, _mod) - P.x - Q.x) % _mod;
-            BigInteger yr = (lm * (Q.x - xr) - Q.y) % _mod;
+            BigInteger lm = (P.Y - Q.Y) * x % _mod;
+            BigInteger xr = (BigInteger.ModPow(lm, 2, _mod) - P.X - Q.X) % _mod;
+            BigInteger yr = (lm * (Q.X - xr) - Q.Y) % _mod;
 
             if (d > 1 && d < _mod)
             {
@@ -39,20 +39,19 @@ namespace Lenstra_elliptic_curve_factorization
 
         private Point DoublePoint(Point P) //удвоение точки
         {
-            if (P.x == 0 && P.y == 0)
+            if (P.X == 0 && P.Y == 0)
                 return P;
 
-            GCD(2 * P.y, _mod, out BigInteger x, out _);
+            ExtendedGCD(2 * P.Y, _mod, out BigInteger x, out _);
 
-            BigInteger lm = (3 * BigInteger.ModPow(P.x, 2, _mod) + _a) * x % _mod;
-            BigInteger xr = (BigInteger.ModPow(lm, 2, _mod) - 2 * P.x) % _mod;
-            BigInteger yr = (lm * (P.x - xr) - P.y) % _mod;
+            BigInteger lm = (3 * BigInteger.ModPow(P.X, 2, _mod) + _a) * x % _mod;
+            BigInteger xr = (BigInteger.ModPow(lm, 2, _mod) - 2 * P.X) % _mod;
+            BigInteger yr = (lm * (P.X - xr) - P.Y) % _mod;
 
             return new Point(xr, yr);
         }
 
-        private BigInteger GCD(BigInteger a, BigInteger b, out BigInteger x, out BigInteger y)
-        //расширенный алгоритм евклида
+        private BigInteger ExtendedGCD(BigInteger a, BigInteger b, out BigInteger x, out BigInteger y)
         {
             BigInteger x2 = 1, x1 = 0, y2 = 0, y1 = 1;
 
