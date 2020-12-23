@@ -2,7 +2,7 @@
 
 namespace Lenstra_elliptic_curve_factorization
 {
-    public static class BigInteherExtension
+    static class BigInteherExtension
     {
         public static BigInteger PosMod(this BigInteger number, BigInteger modulus)
         {
