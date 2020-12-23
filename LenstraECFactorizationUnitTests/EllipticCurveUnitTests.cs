@@ -7,6 +7,7 @@ namespace LenstraECFactorizationUnitTests
     [TestClass]
     public class EllipticCurveUnitTests
     {
+
         [TestMethod]
         public void TestAddPoints()
         {
