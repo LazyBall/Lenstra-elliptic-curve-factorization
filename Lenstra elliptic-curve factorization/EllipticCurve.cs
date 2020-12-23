@@ -64,6 +64,7 @@ namespace Lenstra_elliptic_curve_factorization
 
         private Point DoublePoint(Point p)
         {
+            if (p.Y.IsZero) return PointAtInfinity;
             BigInteger lambda = Helper.ExtendedGCD(2 * p.Y, this.Modulus,
                 out BigInteger inverse, out _);
             if (lambda != 1 && lambda != this.Modulus) throw new ComputationException(lambda);
@@ -96,7 +97,7 @@ namespace Lenstra_elliptic_curve_factorization
 
         public Point Multiply(BigInteger factor, Point p)
         {
-            if (!IsOnCurve(p)) throw new ArgumentException();
+            if (!IsOnCurve(p)) throw new ArgumentException(); 
             if (factor.IsZero || p == PointAtInfinity) return PointAtInfinity;
             p = PreparePoint(p);
 
@@ -110,7 +111,7 @@ namespace Lenstra_elliptic_curve_factorization
             Point degree = (Point)p.Clone();
             Point result = PointAtInfinity;
 
-            while (!factor.IsZero)
+            do
             {
                 if (!factor.IsEven)
                 {
@@ -118,7 +119,7 @@ namespace Lenstra_elliptic_curve_factorization
                 }
                 degree = DoublePoint(degree);
                 factor >>= 1;
-            }
+            } while (!(factor.IsZero || degree == PointAtInfinity));
 
             return negate ? LocalNegate(result) : result;
         }

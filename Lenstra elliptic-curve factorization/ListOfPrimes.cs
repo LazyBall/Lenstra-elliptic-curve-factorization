@@ -5,29 +5,37 @@ namespace Lenstra_elliptic_curve_factorization
 {
     class ListOfPrimes
     {
-        private readonly List<int> _primes;
+        private static readonly List<int> _primes;
+        private static readonly object _lock;
 
-        public ListOfPrimes()
+        static ListOfPrimes()
         {
-            this._primes = new List<int>() { 2, 3 };
+            _primes = new List<int>() { 2, 3 };
+            _lock = new object();
         }
 
         public int this[int index]
         {
             get
             {
-                while (this._primes.Count <= index)
+                if (_primes.Count <= index)
                 {
-                    this._primes.Add(GetNextPrime());
+                    lock (_lock)
+                    {
+                        while (_primes.Count <= index)
+                        {
+                            _primes.Add(GetNextPrime());
+                        }
+                    }
                 }
-
-                return this._primes[index];
+                
+                return _primes[index];
             }
         }
 
         private int GetNextPrime()
         {
-            int candidate = this._primes[^1];
+            int candidate = _primes[^1];
 
             do
             {
@@ -35,9 +43,9 @@ namespace Lenstra_elliptic_curve_factorization
                 int limit = (int)Math.Ceiling(Math.Sqrt(candidate));
                 bool isPrime = true;
 
-                for (int i = 1; i < this._primes.Count && isPrime; i++)
+                for (int i = 1; i < _primes.Count && isPrime; i++)
                 {
-                    int prime = this._primes[i];
+                    int prime = _primes[i];
                     if (prime > limit) break;
                     else isPrime = (candidate % prime != 0);
                 }
