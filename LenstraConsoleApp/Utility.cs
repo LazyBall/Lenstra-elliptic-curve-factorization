@@ -30,7 +30,6 @@ namespace LenstraConsoleApp
 
                 switch (Console.ReadLine().Replace(" ", "").ToLower())
                 {
-                    
                     case "cha":
                         ChangeAttemptsCount();
                         break;
@@ -39,11 +38,11 @@ namespace LenstraConsoleApp
                         break;
                     case "clear":
                         Console.Clear();
-                        break;                    
+                        break;
                     case "exit":
                         return;
                     case "fz":
-                        ShowFactorizeMenu();
+                        ShowFactorizationMenu();
                         break;
                     case "help":
                         Help();
@@ -58,7 +57,7 @@ namespace LenstraConsoleApp
             }
         }
 
-        private void ShowFactorizeMenu()
+        private void ShowFactorizationMenu()
         {
             Console.Write("Enter number for factorization (min 4, random default): ");
             string inputN = Console.ReadLine().Replace(" ", "");
@@ -113,7 +112,7 @@ namespace LenstraConsoleApp
             Console.WriteLine();
             Console.WriteLine("\t C U R R E N T  C O N F I G");
             Console.WriteLine(Enumerable.Repeat('#', 50).ToArray());
-            Console.WriteLine("Attempts count: {0}", this._lenstra.Attempts);
+            Console.WriteLine("Count of attempts: {0}", this._lenstra.Attempts);
             Console.WriteLine("Size of base: {0}", this._lenstra.SizeOfBase);
             Console.WriteLine(Enumerable.Repeat('#', 50).ToArray());
             Console.WriteLine("\n");
@@ -154,11 +153,11 @@ namespace LenstraConsoleApp
             Console.WriteLine();
             Console.WriteLine("\t\t C O M M A N D S \n");
             Console.WriteLine(Enumerable.Repeat('#', 50).ToArray());
-            Console.WriteLine("[cha] - change attempts count");
+            Console.WriteLine("[cha] - change count of attempts");
             Console.WriteLine("[chsb] - change size of base (count of primes)");
             Console.WriteLine("[clear] - clear console output");
             Console.WriteLine("[exit] - close programm");
-            Console.WriteLine("[fz] - run factorize");
+            Console.WriteLine("[fz] - run factorization");
             Console.WriteLine("[help] - show help");
             Console.WriteLine("[shconf] - show current config of algorithm");
             Console.WriteLine(Enumerable.Repeat('#', 50).ToArray());
