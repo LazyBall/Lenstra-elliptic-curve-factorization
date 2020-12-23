@@ -1,5 +1,6 @@
 using Lenstra_elliptic_curve_factorization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Numerics;
 
 namespace LenstraECFactorizationUnitTests
 {
@@ -75,6 +76,19 @@ namespace LenstraECFactorizationUnitTests
             }
 
             CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void TestMultBook()
+        {
+            EllipticCurve curve = new EllipticCurve(a: -1, b: 3231, modulus: 661643);
+
+            Point q = (87, 2);
+            q = curve.Multiply(BigInteger.Pow(2, 9), q);
+            bool success = q.Equals((Point)(196083, 134895));
+            q = curve.Multiply(BigInteger.Pow(3, 6), q);
+            success = success && q.Equals((Point)(470021, 282574));
+            Assert.IsTrue(success);
         }
     }
 }

@@ -97,7 +97,7 @@ namespace Lenstra_elliptic_curve_factorization
 
         public Point Multiply(BigInteger factor, Point p)
         {
-            if (!IsOnCurve(p)) throw new ArgumentException(); 
+            if (!IsOnCurve(p)) throw new ArgumentException();
             if (factor.IsZero || p == PointAtInfinity) return PointAtInfinity;
             p = PreparePoint(p);
 

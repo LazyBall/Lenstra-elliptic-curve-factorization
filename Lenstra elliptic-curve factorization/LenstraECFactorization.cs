@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Numerics;
-using System.Threading.Tasks;
 
 namespace Lenstra_elliptic_curve_factorization
 {
@@ -39,23 +38,7 @@ namespace Lenstra_elliptic_curve_factorization
             }
 
             return result;
-        }
-
-        public BigInteger Factorize1(BigInteger number)
-        {
-            Task<BigInteger>[] tasks = new Task<BigInteger>[Environment.ProcessorCount];
-
-            for(int i=0; i<tasks.Length; i++)
-            {
-                tasks[i] = Task.Run(() => Factorize(number));
-            }
-
-            int index = Task.WaitAny(tasks);
-
-            if (index >= 0) return tasks[index].Result;
-
-            return BigInteger.One;
-        }
+        }    
 
         private BigInteger RunRound(Point p, EllipticCurve curve)
         {

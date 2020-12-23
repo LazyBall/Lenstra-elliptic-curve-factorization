@@ -12,9 +12,9 @@ namespace Lenstra_elliptic_curve_factorization
             BigInteger c = BigInteger.Parse("4400743697434543212277");
             BigInteger d = BigInteger.Parse("113");
             LenstraECFactorization factorization = new
-                LenstraECFactorization(1000, 20);
+                LenstraECFactorization(1000, 10);
 
-            Console.WriteLine(factorization.Factorize1(a*b));
+            Console.WriteLine(factorization.Factorize(d));
         }
     }
 }
