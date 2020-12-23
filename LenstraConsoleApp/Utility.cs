@@ -30,26 +30,33 @@ namespace LenstraConsoleApp
 
                 switch (Console.ReadLine().Replace(" ", "").ToLower())
                 {
-                    case "cha":
-                        ChangeAttemptsCount();
+                    case "chca":
+                        ChangeCountOfAttempts();
                         break;
+
                     case "chsb":
                         ChangeSizeOfBase();
                         break;
+
                     case "clear":
                         Console.Clear();
                         break;
+
                     case "exit":
                         return;
-                    case "fz":
-                        ShowFactorizationMenu();
-                        break;
+
                     case "help":
                         Help();
                         break;
+
+                    case "run":
+                        ShowFactorizationMenu();
+                        break;
+
                     case "shconf":
                         ShowInfo();
                         break;
+
                     default:
                         Console.WriteLine("Unknown command.");
                         break;
@@ -59,7 +66,7 @@ namespace LenstraConsoleApp
 
         private void ShowFactorizationMenu()
         {
-            Console.Write("Enter number for factorization (min 4, random default): ");
+            Console.Write("Enter number for factorization (min 4, default random): ");
             string inputN = Console.ReadLine().Replace(" ", "");
             BigInteger number;
             if (string.IsNullOrEmpty(inputN))
@@ -80,14 +87,14 @@ namespace LenstraConsoleApp
                 Console.WriteLine("Invalid input.\n");
                 return;
             }
-            Console.WriteLine("Selected number = {0}", number);
+            Console.WriteLine("Selected number = {0}\n", number);
 
             ShowResults(number, RunAlgorithm(number));
         }
 
         private BigInteger RunAlgorithm(BigInteger number)
         {
-            Console.WriteLine("Computing... ");
+            Console.WriteLine("Computing...");
             using (ProgressBar progressBar = new ProgressBar())
             {
                 number = this._lenstra.Factorize(number, progressBar);
@@ -118,7 +125,7 @@ namespace LenstraConsoleApp
             Console.WriteLine("\n");
         }
 
-        private void ChangeAttemptsCount()
+        private void ChangeCountOfAttempts()
         {
             Console.Write("Enter new count of attempts (min 1): ");
 
@@ -153,12 +160,12 @@ namespace LenstraConsoleApp
             Console.WriteLine();
             Console.WriteLine("\t\t C O M M A N D S \n");
             Console.WriteLine(Enumerable.Repeat('#', 50).ToArray());
-            Console.WriteLine("[cha] - change count of attempts");
+            Console.WriteLine("[chca] - change count of attempts");
             Console.WriteLine("[chsb] - change size of base (count of primes)");
             Console.WriteLine("[clear] - clear console output");
             Console.WriteLine("[exit] - close programm");
-            Console.WriteLine("[fz] - run factorization");
             Console.WriteLine("[help] - show help");
+            Console.WriteLine("[run] - run factorization");
             Console.WriteLine("[shconf] - show current config of algorithm");
             Console.WriteLine(Enumerable.Repeat('#', 50).ToArray());
             Console.WriteLine();
