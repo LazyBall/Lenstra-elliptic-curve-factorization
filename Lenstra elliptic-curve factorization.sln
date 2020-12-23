@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lenstra elliptic-curve factorization", "Lenstra elliptic-curve factorization\Lenstra elliptic-curve factorization.csproj", "{AE93054D-8898-439D-A045-4833C650FF09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LenstraECFactorizationUnitTests", "LenstraECFactorizationUnitTests\LenstraECFactorizationUnitTests.csproj", "{E69FB287-8AA0-40A3-8C4B-837AF2D5D052}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LenstraECFactorizationUnitTests", "LenstraECFactorizationUnitTests\LenstraECFactorizationUnitTests.csproj", "{E69FB287-8AA0-40A3-8C4B-837AF2D5D052}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LenstraConsoleApp", "LenstraConsoleApp\LenstraConsoleApp.csproj", "{FE3E67A3-D8CB-4E5C-91E9-7B394D38412C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{E69FB287-8AA0-40A3-8C4B-837AF2D5D052}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E69FB287-8AA0-40A3-8C4B-837AF2D5D052}.Release|x64.ActiveCfg = Release|Any CPU
 		{E69FB287-8AA0-40A3-8C4B-837AF2D5D052}.Release|x64.Build.0 = Release|Any CPU
+		{FE3E67A3-D8CB-4E5C-91E9-7B394D38412C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE3E67A3-D8CB-4E5C-91E9-7B394D38412C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE3E67A3-D8CB-4E5C-91E9-7B394D38412C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FE3E67A3-D8CB-4E5C-91E9-7B394D38412C}.Debug|x64.Build.0 = Debug|Any CPU
+		{FE3E67A3-D8CB-4E5C-91E9-7B394D38412C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE3E67A3-D8CB-4E5C-91E9-7B394D38412C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE3E67A3-D8CB-4E5C-91E9-7B394D38412C}.Release|x64.ActiveCfg = Release|Any CPU
+		{FE3E67A3-D8CB-4E5C-91E9-7B394D38412C}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
