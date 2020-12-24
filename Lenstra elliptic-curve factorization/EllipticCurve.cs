@@ -68,6 +68,7 @@ namespace Lenstra_elliptic_curve_factorization
             BigInteger lambda = Helper.ExtendedGCD(2 * p.Y, this.Modulus,
                 out BigInteger inverse, out _);
             if (lambda != 1 && lambda != this.Modulus) throw new ComputationException(lambda);
+            if (lambda == this.Modulus && p.Y != 0) throw new ComputationException(p.Y);
 
             lambda = (3 * BigInteger.ModPow(p.X, 2, this.Modulus) + this.A) * inverse;
             BigInteger xr = BigInteger.ModPow(lambda, 2, this.Modulus) - 2 * p.X;
